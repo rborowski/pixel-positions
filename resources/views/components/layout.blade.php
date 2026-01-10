@@ -11,14 +11,19 @@
     <div>
         <nav>
             <div>
-                <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="">
+                <a href="/">
+                    <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="">
+                </a>
             </div>
 
             <div>
-                links
+                <a href="#">Jobs</a>
+                <a href="#">Careers</a>
+                <a href="#">Salaries</a>
+                <a href="#">Companies</a>
             </div>
             <div>
-                post a job
+                <a href="#">Post a Job</a>
             </div>
         </nav>
 
