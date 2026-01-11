@@ -11,6 +11,6 @@
             <x-tag>Tag</x-tag>
         </div>
 
-        <img class="rounded-xl " src="http://picsum.photos/42/42" alt="">
+        <img class="rounded-xl " src="http://picsum.photos/seed/{{ rand(0, 100) }}/42/42" alt="">
     </div>
 </div>
