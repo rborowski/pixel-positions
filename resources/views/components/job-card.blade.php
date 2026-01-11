@@ -1,8 +1,8 @@
 <div class="p-4 bg-white/5 rounded-xl flex flex-col text-center">
     <div class="self-start text-sm">Employer Name</div>
     <div class="py-8 font-bold">
-        <div>Title</div>
-        <div>Salary</div>
+        <h3>Title</h3>
+        <p>Salary</p>
     </div>
     <div class="flex justify-between items-center mt-auto">
         <div>
