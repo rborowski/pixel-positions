@@ -1,6 +1,6 @@
 <div class="p-4 bg-white/5 rounded-xl flex gap-x-6 space-between">
     <div>
-        <img class="rounded-xl " src="http://placeholdit.com/90/" alt="">
+        <img class="rounded-xl " src="http://picsum.photos/100/100" alt="">
     </div>
     <div class="flex-1">
         <a href="#" class="self-start text-sm">Employer Name</a>
