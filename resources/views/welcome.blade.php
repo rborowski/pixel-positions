@@ -1,6 +1,14 @@
 <x-layout>
-    <div class="space-y-10">
-        <section>
+    <div class="space-y-10 mb-5">
+        <section class="text-center pt-6">
+            <h1 class="text-center font-bold text-4xl ">Let's Find Your Next Job</h1>
+
+            <form action="">
+                <input type="text" placeholder="Web Developer..." class="mt-6 px-5 py-4 w-full max-w-xl border rounded-xl bg-white/5 border-white/10"/>
+            </form>
+        </section>
+
+        <section class="pt-10">
             <x-section-heading>Featured Jobs</x-section-heading>
 
             <div class="grid lg:grid-cols-3 gap-8 mt-6">
