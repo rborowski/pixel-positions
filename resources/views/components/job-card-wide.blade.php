@@ -1,13 +1,15 @@
-<div class="p-4 bg-white/5 rounded-xl flex space-between">
-    <img class="rounded-xl " src="http://placeholdit.com/150/" alt="">
-    <div class=" ml-2">
+<div class="p-4 bg-white/5 rounded-xl flex gap-x-6 space-between">
+    <div>
+        <img class="rounded-xl " src="http://placeholdit.com/90/" alt="">
+    </div>
+    <div class="flex-1">
         <a href="#" class="self-start text-sm">Employer Name</a>
-        <div class="py-8 font-bold">
+        <div class="font-bold">
             <h3>Title</h3>
             <p>Full Time - From 50,000 USD</p>
         </div>
     </div>
-    <div class="flex justify-between mt-auto">
+    <div>
         <x-tag>Tag</x-tag>
         <x-tag>Tag</x-tag>
         <x-tag>Tag</x-tag>
