@@ -8,7 +8,7 @@
 @font-face {
     font-family: Hanken Grotesk;
     font-style: normal;
-    font-weight: 200 700;
+    font-weight: 200 600;
     font-display: swap;
     src: url("../fonts/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
 }
@@ -17,5 +17,7 @@
     --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
     --color-bgblack: #060606;
+    --text-2xs: 0.625rem;
+    --font-weight-bold: 600;
 
 }
