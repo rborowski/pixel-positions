@@ -1,6 +1,6 @@
 <div class="p-4 bg-white/5 rounded-xl flex gap-x-6 space-between">
     <div>
-        <img class="rounded-xl " src="http://picsum.photos/seed/{{ rand(0, 100) }}/100/100" alt="">
+        <x-employer-logo/>
     </div>
     <div class="flex-1 flex flex-col">
         <a href="#" class="self-start text-sm text-gray-400">Employer Name</a>
