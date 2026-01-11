@@ -12,19 +12,19 @@
         <section>
             <x-section-heading>Tags</x-section-heading>
 
-            <div class="mt-6 space-x-1">
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
+            <div class="mt-6 space-x-1 space-y-2">
+                <x-tag>Backend</x-tag>
+                <x-tag>Frontend</x-tag>
+                <x-tag>Manager</x-tag>
+                <x-tag>PHP</x-tag>
+                <x-tag>C#</x-tag>
+                <x-tag>Laravel</x-tag>
+                <x-tag>Symfony</x-tag>
+                <x-tag>TypeScript</x-tag>
+                <x-tag>Java</x-tag>
+                <x-tag>Python</x-tag>
+                <x-tag>Vue</x-tag>
+                <x-tag>React</x-tag>
             </div>
         </section>
         <section>
