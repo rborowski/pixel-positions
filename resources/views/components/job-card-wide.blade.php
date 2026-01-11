@@ -2,12 +2,10 @@
     <div>
         <img class="rounded-xl " src="http://picsum.photos/seed/{{ rand(0, 100) }}/100/100" alt="">
     </div>
-    <div class="flex-1">
+    <div class="flex-1 flex flex-col">
         <a href="#" class="self-start text-sm text-gray-400">Employer Name</a>
-        <div class="font-bold">
-            <h3>Title</h3>
-            <p>Full Time - From 50,000 USD</p>
-        </div>
+        <h3 class="font-bold text-xl mt-3">Title</h3>
+        <p class="text-sm text-gray-400 mt-auto">Full Time - From 50,000 USD</p>
     </div>
     <div>
         <x-tag>Tag</x-tag>
