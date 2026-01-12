@@ -6,11 +6,16 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 //Route::controller(JobController::class)
-Route::get('/', [JobController::class,'index']);
+Route::controller(JobController::class)->group(function () {
+    Route::get('/', 'index');
+});
 
-Route::get('/register', [RegisteredUserController::class,'create'])->middleware('guest');
-Route::post('/register', [RegisteredUserController::class,'store'])->middleware('guest');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/register', [RegisteredUserController::class,'create']);
+    Route::post('/register', [RegisteredUserController::class,'store']);
 
-Route::get('/login', [SessionController::class,'create'])->middleware('guest');
-Route::post('/login', [SessionController::class,'store'])->middleware('guest');
+    Route::get('/login', [SessionController::class,'create']);
+    Route::post('/login', [SessionController::class,'store']);
+});
+
 Route::delete('/logout', [SessionController::class,'destroy'])->middleware('auth');
