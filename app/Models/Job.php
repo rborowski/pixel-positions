@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Job extends Model
 {
@@ -16,9 +17,9 @@ class Job extends Model
         //
     }
 
-    public function tags()
+    public function tags(): BelongsToMany
     {
-        return [];
+        return $this->belongsToMany(Tag::class);
     }
 
     public function employer(): BelongsTo
