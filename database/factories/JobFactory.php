@@ -23,7 +23,7 @@ class JobFactory extends Factory
             'salary' => $this->faker->randomElement(['50,000 USD', '60,000 USD', '100,000 USD', '150,000 USD', '90,000 USD']),
             'location' => $this->faker->randomElement(['Remote', 'Hybrid', 'On-site']),
             'schedule' => $this->faker->randomElement(['Full Time', 'Part Time', 'Freelance']),
-            'url' => $this->faker->url(),
+            'link' => $this->faker->url(),
             'featured' => false
 
         ];
