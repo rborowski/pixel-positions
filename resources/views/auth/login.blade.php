@@ -1,5 +1,5 @@
 <x-layout>
-    <x-page-heading>Register</x-page-heading>
+    <x-page-heading>Log in</x-page-heading>
 
     <x-forms.form method="POST" action="/login" >
 
