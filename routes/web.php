@@ -22,7 +22,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [RegisteredUserController::class,'store']);
 
     Route::get('/login', [SessionController::class,'create']);
-    Route::post('/login', [SessionController::class,'store']);
+    Route::post('/login', [SessionController::class,'store'])->name('login');
 });
 
 Route::delete('/logout', [SessionController::class,'destroy'])->middleware('auth');
