@@ -7,7 +7,7 @@
         <x-forms.input label="Location" name="location" placeholder="Winter Park, Florida"/>
 
         <x-forms.select label="Schedule" name="schedule">
-            <option>Part time</option>
+            <option>Part Time</option>
             <option>Full Time</option>
             <option>Freelance</option>
         </x-forms.select>
