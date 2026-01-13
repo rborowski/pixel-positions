@@ -8,7 +8,11 @@
     </div>
     <div class="flex-1 flex flex-col">
         <a href="#" class="self-start text-sm text-gray-400">{{ $job->employer->name }}</a>
-        <h3 class="group-hover:text-blue-600 text-xl font-bold transition-colors duration-300 mt-3">{{ $job->title }}</h3>
+        <h3 class="group-hover:text-blue-600 text-xl font-bold transition-colors duration-300 mt-3">
+            <a href="{{ $job->link }}" target="_blank">
+                {{ $job->title }}
+            </a>
+        </h3>
         <p class="text-sm text-gray-400 mt-auto">{{ $job->schedule }} - From {{ $job->salary }}</p>
     </div>
     <div>
