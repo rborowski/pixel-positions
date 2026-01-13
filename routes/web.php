@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 //Route::controller(JobController::class)
 Route::controller(JobController::class)->group(function () {
     Route::get('/', 'index');
+    Route::get('/jobs/create', 'create')->middleware('auth');
+    Route::post('/jobs', 'store')->middleware('auth');
 });
 
 Route::get('/search', SearchController::class);
