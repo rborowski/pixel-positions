@@ -19,7 +19,7 @@ class EmployerFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'logo' => $this->faker->imageUrl(),
+            'logo' => 'http://picsum.photos/seed/' . rand(0, 100) . '/100/100/', // This is a temporary walkover because placeholder.com no longer exists,
             'user_id' => User::factory(),
         ];
     }
