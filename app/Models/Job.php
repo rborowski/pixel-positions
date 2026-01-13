@@ -16,6 +16,7 @@ class Job extends Model
         'title',
         'salary',
         'schedule',
+        'link',
         'location',
         'tags'
     ];

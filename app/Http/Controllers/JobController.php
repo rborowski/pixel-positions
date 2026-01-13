@@ -16,7 +16,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with('employer')->get()->groupBy('featured');
+        $jobs = Job::with('employer')->latest()->get()->groupBy('featured');
 
         return view('jobs.index', [
             'featuredJobs' => $jobs[0],
@@ -39,12 +39,11 @@ class JobController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'employer_id' => ['required', 'exists:employers'],
             'title' => ['required', 'max:255'],
             'salary' => ['required'],
             'location' => ['required', 'max:255'],
             'schedule' => ['required', Rule::in(['Part Time', 'Full Time', 'Freelance'])],
-            'url' => ['required', 'active_url'],
+            'link' => ['required', 'active_url'],
             'tags' => ['nullable'],
         ]);
 

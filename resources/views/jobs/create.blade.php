@@ -12,12 +12,12 @@
             <option>Freelance</option>
         </x-forms.select>
 
-        <x-forms.input label="Url" name="url" placeholder="https://acme.com/jobs/ceo-wanted"/>
+        <x-forms.input label="Link" name="link" placeholder="https://acme.com/jobs/ceo-wanted"/>
         <x-forms.checkbox label="Feature (Costs Extra)" name="featured"/>
 
         <x-forms.divider />
 
-        <x-forms.input label="Tags (comma separated)" name="tags" placeholder="laracasts, video, education"/>
+        <x-forms.input label="Tags (comma separated)" name="tags" placeholder="frontend,php,backend"/>
 
         <x-forms.button>Publish</x-forms.button>
 
