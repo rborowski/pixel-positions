@@ -1,4 +1,8 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('title', 'Create a Job - Pixel Positions')
+
+@section('content')
     <x-page-heading>New Job</x-page-heading>
 
     <x-forms.form method="POST" action="/jobs">
@@ -22,4 +26,4 @@
         <x-forms.button>Publish</x-forms.button>
 
     </x-forms.form>
-</x-layout>
+@endsection

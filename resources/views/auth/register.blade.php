@@ -1,4 +1,8 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('title', 'Register - Pixel Positions')
+
+@section('content')
     <x-page-heading>Register</x-page-heading>
 
     <x-forms.form method="POST" action="/register" enctype="multipart/form-data">
@@ -14,4 +18,4 @@
 
         <x-forms.button>Create Account</x-forms.button>
     </x-forms.form>
-</x-layout>
+@endsection

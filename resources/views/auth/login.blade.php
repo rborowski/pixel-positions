@@ -1,4 +1,8 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('title', 'Log in - Pixel Positions')
+
+@section('content')
     <x-page-heading>Log in</x-page-heading>
 
     <x-forms.form method="POST" action="/login" >
@@ -8,4 +12,4 @@
 
         <x-forms.button>Log in</x-forms.button>
     </x-forms.form>
-</x-layout>
+@endsection
