@@ -6,8 +6,13 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
-    public function __invoke(Tag $tag)
+    public function show(Tag $tag)
     {
         return view('results', ['jobs' => $tag->jobs]);
+    }
+
+    public function index()
+    {
+        return view('tags.index', ['tags' => Tag::all()]);
     }
 }

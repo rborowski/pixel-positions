@@ -15,7 +15,12 @@ Route::controller(JobController::class)->group(function () {
 });
 
 Route::get('/search', SearchController::class);
-Route::get('/tags/{tag:name}', TagController::class);
+
+Route::controller(TagController::class)->group(function () {
+    Route::get('/tags', 'index');
+    Route::get('/tags/{tag:name}', 'show');
+
+});
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisteredUserController::class,'create']);
