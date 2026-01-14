@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Job;
-use App\Models\Tag;
+use App\Filters\JobFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -14,14 +13,13 @@ class JobController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::with(['employer', 'tags'])->latest()->get()->groupBy('featured');
+        $query = JobFilter::make($request);
+        $jobs = $query->latest()->get();
 
-        return view('jobs.index', [
-            'featuredJobs' => $jobs[0],
-            'jobs' => $jobs[1],
-            'tags' => Tag::all()
+        return view('results', [
+            'jobs' => $jobs,
         ]);
     }
 
