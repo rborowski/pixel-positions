@@ -12,7 +12,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with(['employer', 'tags'])->latest()->get()->groupBy('featured');
+        $jobs = Job::with(['employer', 'tags', 'salary'])->latest()->get()->groupBy('featured');
 
         return view('index', [
             'featuredJobs' => $jobs[0] ?? collect(),

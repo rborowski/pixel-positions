@@ -15,7 +15,7 @@
                 {{ $job->title }}
             </a>
         </h3>
-        <p class="text-sm text-gray-400 mt-auto">{{ $job->schedule }} - From {{ $job->salary }}</p>
+        <p class="text-sm text-gray-400 mt-auto">{{ $job->schedule }} - From {{ $job->salary?->formatted() ?? 'N/A' }}</p>
     </div>
     <div>
         @foreach($job->tags as $tag)

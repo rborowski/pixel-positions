@@ -38,7 +38,8 @@ class JobController extends Controller
     {
         $attributes = $request->validate([
             'title' => ['required', 'max:255'],
-            'salary' => ['required'],
+            'salary_amount' => ['required', 'numeric', 'min:0'],
+            'salary_currency' => ['required', Rule::in(\App\Models\Salary::currencies())],
             'location' => ['required', 'max:255'],
             'schedule' => ['required', Rule::in(['Part Time', 'Full Time', 'Freelance'])],
             'link' => ['required', 'active_url'],
@@ -47,7 +48,9 @@ class JobController extends Controller
 
         $attributes['featured'] = $request->has('featured');
 
-        $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
+        $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags', 'salary_amount', 'salary_currency']));
+
+        $job->assignSalary($attributes['salary_amount'], $attributes['salary_currency']);
 
         if ($attributes['tags'] ?? false) {
             foreach(explode(',', $attributes['tags']) as $tag) {

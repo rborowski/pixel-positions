@@ -7,7 +7,13 @@
 
     <x-forms.form method="POST" action="/jobs">
         <x-forms.input label="Title" name="title" placeholder="CEO"/>
-        <x-forms.input label="Salary" name="salary" placeholder="50,000 USD"/>
+        <x-forms.input label="Salary Amount" name="salary_amount" type="number" placeholder="50000"/>
+        <x-forms.select label="Currency" name="salary_currency">
+            <option value="PLN">PLN</option>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            <option value="CHF">CHF</option>
+        </x-forms.select>
         <x-forms.input label="Location" name="location" placeholder="Winter Park, Florida"/>
 
         <x-forms.select label="Schedule" name="schedule">

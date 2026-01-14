@@ -14,7 +14,7 @@
                 {{ $job->title }}
             </a>
         </h3>
-        <p class="text-sm mt-4">{{ $job->schedule }} - From {{ $job->salary }}</p>
+        <p class="text-sm mt-4">{{ $job->schedule }} - From {{ $job->salary?->formatted() ?? 'N/A' }}</p>
     </div>
     <div class="flex justify-between items-center mt-auto">
         <div>
