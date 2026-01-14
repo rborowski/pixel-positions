@@ -20,17 +20,9 @@ Route::controller(JobController::class)->group(function () {
 
 Route::get('/search', SearchController::class);
 
-Route::controller(TagController::class)->group(function () {
-    Route::get('/tags', 'index');
-});
-
-Route::controller(SalaryController::class)->group(function () {
-   Route::get('/salaries', 'index');
-});
-
-Route::controller(EmployerController::class)->group(function () {
-    Route::get('/employers', 'index');
-});
+Route::get('/tags', [TagController::class, 'index']);
+Route::get('/salaries', [SalaryController::class, 'index']);
+Route::get('/employers', [EmployerController::class, 'index']);
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisteredUserController::class,'create']);
