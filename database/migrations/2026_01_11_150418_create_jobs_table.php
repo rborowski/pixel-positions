@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Employer;
+use App\Models\Salary;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Employer::class);
             $table->string('title');
             $table->text('salary');
+            $table->foreignIdFor(Salary::class);
             $table->text('location');
             $table->text('schedule')->default('Full Time');
             $table->text('link');
