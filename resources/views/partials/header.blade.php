@@ -8,8 +8,11 @@
     @include('partials.navbar')
 
     @auth
-        <div class="space-x-6 font-bold flex">
-            <a href="/jobs/create">Post a Job</a>
+        <div class="space-x-6 font-bold  items-center flex">
+            <div class="inline-flex items-center gap-x-2">
+                <span class="w-2 h-2 bg-blue-600 inline-block"></span>
+                <a href="/jobs/create">Post a Job</a>
+            </div>
 
             <form method="POST" action="/logout">
                 @csrf
