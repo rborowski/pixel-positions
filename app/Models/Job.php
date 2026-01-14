@@ -27,17 +27,6 @@ class Job extends Model
         $this->tags()->attach($tag);
     }
 
-    public function assignSalary(float $amount, string $currency): void
-    {
-        $salary = Salary::firstOrCreate([
-                'value' => $amount,
-                'currency' => $currency,
-            ]
-        );
-
-        $this->salary()->associate($salary);
-    }
-
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
