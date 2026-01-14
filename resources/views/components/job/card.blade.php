@@ -4,7 +4,7 @@
 
 <x-panel class="flex flex-col text-center">
     <div class="self-start text-sm">
-        <a href="/employers/{{ $employer->id }}">
+        <a href="{{ route('jobs.index', ['employer' => $job->employer->id]) }}">
             {{ $job->employer->name }}
         </a>
     </div>

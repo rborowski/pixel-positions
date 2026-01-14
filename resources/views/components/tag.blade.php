@@ -17,7 +17,7 @@
 
 <a
     {{ $attributes }}
-    href="/tags/{{ strtolower($tag->name) }}"
+    href="{{ route('jobs.index', ['tag' => $tag->name]) }}"
     class="{{ $classes }}"
 >
     {{ $tag->name }}

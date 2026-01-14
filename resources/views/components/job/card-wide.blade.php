@@ -7,7 +7,9 @@
         <x-employer.logo :employer="$job->employer"/>
     </div>
     <div class="flex-1 flex flex-col">
-        <a href="#" class="self-start text-sm text-gray-400">{{ $job->employer->name }}</a>
+        <a href="{{ route('jobs.index', ['employer' => $job->employer->id]) }}" class="self-start text-sm text-gray-400">
+            {{ $job->employer->name }}
+        </a>
         <h3 class="group-hover:text-blue-600 text-xl font-bold transition-colors duration-300 mt-3">
             <a href="{{ $job->link }}" target="_blank">
                 {{ $job->title }}
