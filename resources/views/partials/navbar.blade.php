@@ -2,5 +2,5 @@
     <a href="/">Jobs</a>
     <a href="/tags">Tags</a>
     <a href="/salaries">Salaries</a>
-    <a href="/companies">Companies</a>
+    <a href="/employers">Employers</a>
 </nav>

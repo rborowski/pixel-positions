@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SearchController;
@@ -19,7 +20,11 @@ Route::get('/search', SearchController::class);
 Route::controller(TagController::class)->group(function () {
     Route::get('/tags', 'index');
     Route::get('/tags/{tag:name}', 'show');
+});
 
+Route::controller(EmployerController::class)->group(function () {
+    Route::get('/employers', 'index');
+    Route::get('/employers/{employer}', 'show');
 });
 
 Route::middleware(['guest'])->group(function () {

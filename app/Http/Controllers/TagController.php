@@ -8,7 +8,10 @@ class TagController extends Controller
 {
     public function show(Tag $tag)
     {
-        return view('results', ['jobs' => $tag->jobs]);
+        return view('results', [
+            'jobs' => $tag->jobs,
+            'title' => 'All Jobs related to ' . $tag->name . ' tag',
+        ]);
     }
 
     public function index()
