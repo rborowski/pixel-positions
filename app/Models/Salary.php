@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Currency;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,33 +12,34 @@ class Salary extends Model
     /** @use HasFactory<\Database\Factories\SalaryFactory> */
     use HasFactory;
 
-    public const CURRENCY_PLN = 'PLN';
-    public const CURRENCY_EUR = 'EUR';
-    public const CURRENCY_USD = 'USD';
-    public const CURRENCY_CHF = 'CHF';
-
     protected $fillable = [
         "value",
         "currency"
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'currency' => Currency::class,
+        ];
+    }
 
     public function jobs(): HasMany
     {
         return $this->hasMany(Job::class);
     }
 
+    /**
+     * Get all available currency values.
+     * Convenience method for use in views and validation.
+     */
     public static function currencies(): array
     {
-        return [
-            self::CURRENCY_PLN,
-            self::CURRENCY_EUR,
-            self::CURRENCY_USD,
-            self::CURRENCY_CHF,
-        ];
+        return Currency::values();
     }
 
     public function formatted(): string
     {
-        return number_format($this->value, 0, '.', ',') . ' ' . $this->currency;
+        return number_format($this->value, 0, '.', ',') . ' ' . $this->currency->value;
     }
 }

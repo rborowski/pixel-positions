@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Schedule;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,10 +13,6 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
-    public const SCHEDULE_PART_TIME = 'Part Time';
-    public const SCHEDULE_FULL_TIME = 'Full Time';
-    public const SCHEDULE_FREELANCE = 'Freelance';
-
     protected $fillable = [
         'title',
         'salary_id',
@@ -25,13 +22,16 @@ class Job extends Model
         'location',
     ];
 
-    public static function schedules(): array
+    protected function casts(): array
     {
         return [
-            self::SCHEDULE_PART_TIME,
-            self::SCHEDULE_FULL_TIME,
-            self::SCHEDULE_FREELANCE,
+            'schedule' => Schedule::class,
         ];
+    }
+
+    public static function schedules(): array
+    {
+        return Schedule::values();
     }
 
     public function tag(string $tag): void
