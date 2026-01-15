@@ -23,6 +23,7 @@ class JobFactory extends Factory
             'salary_id' => Salary::factory(),
             'title' => $this->faker->jobTitle(),
             'location' => $this->faker->randomElement(['Remote', 'Hybrid', 'On-site']),
+            'description' => implode("\n", $this->faker->paragraphs(5)),
             'schedule' => $this->faker->randomElement(['Full Time', 'Part Time', 'Freelance']),
             'link' => $this->faker->url(),
             'featured' => false

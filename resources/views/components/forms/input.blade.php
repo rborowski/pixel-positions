@@ -11,6 +11,6 @@
 @endphp
 
 <x-forms.field :$label :$name>
-    <input {{ $attributes($defaults) }}>
+    <input {{ $attributes($defaults) }} value="{{ old('value') }}">
 </x-forms.field>
 

@@ -16,6 +16,7 @@ class Job extends Model
         'title',
         'salary_id',
         'schedule',
+        'description',
         'link',
         'location',
     ];

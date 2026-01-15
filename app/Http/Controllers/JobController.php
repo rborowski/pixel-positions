@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\JobFilter;
+use App\Models\Job;
 use App\Models\Salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -24,6 +25,13 @@ class JobController extends Controller
         ]);
     }
 
+    public function show(Job $job)
+    {
+        return view('jobs.show', [
+            'job' => $job
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -42,6 +50,7 @@ class JobController extends Controller
             'salary_amount' => ['required', 'numeric', 'min:0'],
             'salary_currency' => ['required', Rule::in(Salary::currencies())],
             'location' => ['required', 'max:255'],
+            'description' => ['required', 'string', 'max:10000'],
             'schedule' => ['required', Rule::in(['Part Time', 'Full Time', 'Freelance'])],
             'link' => ['required', 'active_url'],
             'tags' => ['nullable'],

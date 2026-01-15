@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignIdFor(Salary::class);
             $table->text('location');
+            $table->text('description');
             $table->text('schedule')->default('Full Time');
             $table->text('link');
             $table->boolean('featured')->default(false);

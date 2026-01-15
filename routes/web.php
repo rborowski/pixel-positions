@@ -16,6 +16,7 @@ Route::controller(JobController::class)->group(function () {
     Route::get('/jobs', 'index')->name('jobs.index');
     Route::get('/jobs/create', 'create')->middleware('auth');
     Route::post('/jobs', 'store')->middleware('auth');
+    Route::get('/jobs/{job}', 'show');
 });
 
 Route::get('/search', SearchController::class);
