@@ -12,6 +12,10 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
+    public const SCHEDULE_PART_TIME = 'Part Time';
+    public const SCHEDULE_FULL_TIME = 'Full Time';
+    public const SCHEDULE_FREELANCE = 'Freelance';
+
     protected $fillable = [
         'title',
         'salary_id',
@@ -20,6 +24,15 @@ class Job extends Model
         'link',
         'location',
     ];
+
+    public static function schedules(): array
+    {
+        return [
+            self::SCHEDULE_PART_TIME,
+            self::SCHEDULE_FULL_TIME,
+            self::SCHEDULE_FREELANCE,
+        ];
+    }
 
     public function tag(string $tag): void
     {

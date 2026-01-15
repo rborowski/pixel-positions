@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Employer;
+use App\Models\Job;
 use App\Models\Salary;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,9 +25,9 @@ class JobFactory extends Factory
             'title' => $this->faker->jobTitle(),
             'location' => $this->faker->randomElement(['Remote', 'Hybrid', 'On-site']),
             'description' => implode("\n", $this->faker->paragraphs(5)),
-            'schedule' => $this->faker->randomElement(['Full Time', 'Part Time', 'Freelance']),
+            'schedule' => $this->faker->randomElement(Job::schedules()),
             'link' => $this->faker->url(),
-            'featured' => false
+            'featured' => $this->faker->boolean(50)
         ];
     }
 }

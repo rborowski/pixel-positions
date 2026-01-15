@@ -51,7 +51,7 @@ class JobController extends Controller
             'salary_currency' => ['required', Rule::in(Salary::currencies())],
             'location' => ['required', 'max:255'],
             'description' => ['required', 'string', 'max:10000'],
-            'schedule' => ['required', Rule::in(['Part Time', 'Full Time', 'Freelance'])],
+            'schedule' => ['required', Rule::in(Job::schedules())],
             'link' => ['required', 'active_url'],
             'tags' => ['nullable'],
         ]);
