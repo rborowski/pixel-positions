@@ -12,7 +12,7 @@ class EmployerFilter implements FilterInterface
         $employerId = $request->employer;
         
         if (!is_numeric($employerId)) {
-            return $query;
+            return $query->whereRaw('1 = 0');
         }
         
         return $query->where('employer_id', (int) $employerId);
@@ -20,6 +20,8 @@ class EmployerFilter implements FilterInterface
 
     public function shouldApply(Request $request): bool
     {
-        return $request->has('employer') && is_numeric($request->employer);
+        return $request->has('employer') 
+            && $request->employer !== null 
+            && $request->employer !== '';
     }
 }

@@ -13,11 +13,19 @@ class SalaryFilter implements FilterInterface
         $currency = $request->currency;
         
         if (!in_array($currency, Salary::currencies())) {
-            return $query;
+            return $query->whereRaw('1 = 0');
         }
 
-        $min = $request->has('min') ? (float) $request->min : null;
-        $max = $request->has('max') ? (float) $request->max : null;
+        $min = $this->parseNumericParam($request, 'min');
+        $max = $this->parseNumericParam($request, 'max');
+        
+        if ($min === false || $max === false) {
+            return $query->whereRaw('1 = 0');
+        }
+        
+        if ($min !== null && $max !== null && $min > $max) {
+            return $query->whereRaw('1 = 0');
+        }
 
         return $query->whereHas('salary', function ($q) use ($currency, $min, $max) {
             $q->where('currency', $currency);
@@ -26,14 +34,25 @@ class SalaryFilter implements FilterInterface
                 $q->where('value', '>=', $min);
             }
             
-            if ($max !== null && $max >= 0 && ($min === null || $max >= $min)) {
+            if ($max !== null && $max >= 0) {
                 $q->where('value', '<=', $max);
             }
         });
     }
 
+    private function parseNumericParam(Request $request, string $key): float|false|null
+    {
+        if (!$request->has($key) || $request->$key === null || $request->$key === '') {
+            return null;
+        }
+        
+        return is_numeric($request->$key) ? (float) $request->$key : false;
+    }
+
     public function shouldApply(Request $request): bool
     {
-        return $request->has('currency');
+        return $request->has('currency') 
+            && $request->currency !== null 
+            && $request->currency !== '';
     }
 }
