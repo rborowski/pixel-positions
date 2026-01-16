@@ -11,8 +11,8 @@
     <div class="px-10 flex flex-col flex-grow">
         @include('partials.header')
 
-        <main class="mt-10 max-w-[986px] mx-auto flex-grow">
-            <div class="space-y-10 mb-5">
+        <main class="mt-10 w-full max-w-[986px] mx-auto flex-grow">
+            <div class="space-y-10 mb-5 w-full">
                 @yield('content')
             </div>
         </main>

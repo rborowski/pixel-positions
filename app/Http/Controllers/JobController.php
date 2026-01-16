@@ -17,12 +17,19 @@ class JobController extends Controller
      */
     public function index(Request $request)
     {
-        $query = JobFilter::make($request);
-        $jobs = $query->latest()->get();
+        $allowedParams = ['q', 'tag', 'employer', 'currency', 'min', 'max'];
+        $filteredParams = array_filter(
+            $request->only($allowedParams),
+            fn($value) => $value !== null && $value !== ''
+        );
+        
+        if (!empty($request->except($allowedParams))) {
+            return redirect()->route('jobs.index', $filteredParams);
+        }
+        
+        $jobs = JobFilter::make($request)->latest()->get();
 
-        return view('results', [
-            'jobs' => $jobs,
-        ]);
+        return view('results', ['jobs' => $jobs]);
     }
 
     public function show(Job $job)
