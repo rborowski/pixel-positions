@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Filters\JobFilter;
+use App\Models\Employer;
 use App\Models\Job;
 use App\Models\Salary;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +31,12 @@ class JobController extends Controller
         
         $jobs = JobFilter::make($request)->latest()->get();
 
-        return view('results', ['jobs' => $jobs]);
+        return view('results', [
+            'jobs' => $jobs,
+            'tags' => Tag::orderBy('name', 'asc')->get(),
+            'employers' => Employer::orderBy('name', 'asc')->get(),
+            'currencies' => Salary::currencies(),
+        ]);
     }
 
     public function show(Job $job)

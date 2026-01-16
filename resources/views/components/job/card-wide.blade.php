@@ -2,7 +2,7 @@
     'job'
 ])
 
-<x-panel class="flex gap-x-6">
+<x-panel class="flex max-md:flex-col  max-md:space-y-4 gap-x-6">
     <div>
         <x-employer.logo :employer="$job->employer"/>
     </div>
@@ -17,7 +17,7 @@
         </h3>
         <p class="text-sm text-gray-400 mt-auto">{{ $job->schedule }} - From {{ $job->salary?->formatted() ?? 'N/A' }}</p>
     </div>
-    <div>
+    <div class="max-md:flex max-md:justify-start flex-wrap max-md:gap-2">
         @foreach($job->tags as $tag)
             <x-tag :$tag />
         @endforeach

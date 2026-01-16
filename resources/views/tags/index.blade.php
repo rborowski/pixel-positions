@@ -8,7 +8,7 @@
 
     <x-page-heading>Tags</x-page-heading>
 
-    <div class="mt-6 space-x-1 space-y-2">
+    <div class="mt-6 gap-2  flex justify-center flex-wrap">
         @foreach($tags as $tag)
             <x-tag :$tag />
         @endforeach

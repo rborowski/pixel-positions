@@ -38,6 +38,24 @@ class Salary extends Model
         return Currency::values();
     }
 
+    /**
+     * Get salary range (min and max) for a given currency or all currencies.
+     */
+    public static function range(?string $currency = null): array
+    {
+        $query = static::query();
+        if ($currency) {
+            $query->where('currency', $currency);
+        }
+        
+        $range = $query->selectRaw('MIN(value) as min, MAX(value) as max')->first();
+        
+        return [
+            'min' => $range?->min ?? 0,
+            'max' => $range?->max ?? 100000,
+        ];
+    }
+
     public function formatted(): string
     {
         return number_format($this->value, 0, '.', ',') . ' ' . $this->currency->value;
