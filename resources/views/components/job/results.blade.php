@@ -13,4 +13,10 @@
             <x-job.card-wide :$job />
         @endforeach
     </div>
+    
+    @if(method_exists($jobs, 'links'))
+        <div class="mt-8">
+            {{ $jobs->links() }}
+        </div>
+    @endif
 @endif

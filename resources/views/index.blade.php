@@ -14,6 +14,13 @@
                 <x-job.card :$job />
             @endforeach
         </div>
+        
+        <div class="mt-8 text-center">
+            <a href="{{ route('jobs.index') }}" class="inline-block px-6 py-3 bg-blue-800 rounded-xl font-bold hover:bg-blue-700 transition-colors duration-300">
+                Find out more
+            </a>
+        </div>
+
     </section>
     <section>
         <x-section-heading>Tags</x-section-heading>
@@ -28,5 +35,12 @@
         <x-section-heading>Recent Jobs</x-section-heading>
 
         <x-job.results :$jobs />
+        
+        <div class="mt-8 text-center">
+            <a href="{{ route('jobs.index') }}" class="inline-block px-6 py-3 bg-blue-800 rounded-xl font-bold hover:bg-blue-700 transition-colors duration-300">
+                Find out more
+            </a>
+        </div>
+
     </section>
 @endsection

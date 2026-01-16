@@ -12,11 +12,17 @@ class HomeController extends Controller
      */
     public function __invoke()
     {
-        $jobs = Job::with(['employer', 'tags', 'salary'])->latest()->get()->groupBy('featured');
-
         return view('index', [
-            'featuredJobs' => $jobs[0] ?? collect(),
-            'jobs' => $jobs[1] ?? collect(),
+            'featuredJobs' => Job::with(['employer', 'tags', 'salary'])
+                ->where('featured', true)
+                ->inRandomOrder()
+                ->limit(9)
+                ->get(),
+            'jobs' => Job::with(['employer', 'tags', 'salary'])
+                ->where('featured', false)
+                ->latest()
+                ->limit(10)
+                ->get(),
             'tags' => Tag::all()
         ]);
     }

@@ -19,7 +19,7 @@ class JobController extends Controller
      */
     public function index(Request $request)
     {
-        $allowedParams = ['q', 'tag', 'employer', 'currency', 'min', 'max'];
+        $allowedParams = ['q', 'tag', 'employer', 'currency', 'min', 'max', 'page'];
         $filteredParams = array_filter(
             $request->only($allowedParams),
             fn($value) => $value !== null && $value !== ''
@@ -29,7 +29,8 @@ class JobController extends Controller
             return redirect()->route('jobs.index', $filteredParams);
         }
         
-        $jobs = JobFilter::make($request)->latest()->get();
+        $jobs = JobFilter::make($request)->latest()->paginate(15);
+        $jobs->appends(Arr::except($filteredParams, 'page'));
 
         return view('results', [
             'jobs' => $jobs,
