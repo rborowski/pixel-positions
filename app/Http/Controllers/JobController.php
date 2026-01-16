@@ -68,7 +68,7 @@ class JobController extends Controller
             'description' => ['required', 'string', 'max:10000'],
             'schedule' => ['required', Rule::in(Job::schedules())],
             'link' => ['required', 'active_url'],
-            'tags' => ['nullable'],
+            'tags' => ['nullable', 'string', 'max:500'],
         ]);
 
         $attributes['featured'] = $request->has('featured');
@@ -84,7 +84,12 @@ class JobController extends Controller
         ]);
 
         if ($attributes['tags'] ?? false) {
-            foreach(explode(',', $attributes['tags']) as $tag) {
+            $tags = array_filter(
+                array_map('trim', explode(',', $attributes['tags'])),
+                fn($tag) => !empty($tag)
+            );
+            
+            foreach ($tags as $tag) {
                 $job->tag($tag);
             }
         }

@@ -36,9 +36,16 @@ class Job extends Model
 
     public function tag(string $tag): void
     {
-        $tag = Tag::firstOrCreate(['name' => $tag]);
-
-        $this->tags()->attach($tag);
+        $tag = trim($tag);
+        $tag = strtolower($tag);
+        $tag = preg_replace('/\s+/', '', $tag);
+        
+        if (empty($tag)) {
+            return;
+        }
+        
+        $tagModel = Tag::firstOrCreate(['name' => $tag]);
+        $this->tags()->syncWithoutDetaching([$tagModel->id]);
     }
 
     public function tags(): BelongsToMany
