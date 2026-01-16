@@ -7,7 +7,7 @@ use App\Models\Salary;
 
 class SalaryController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $currencies = Salary::currencies();
         $salaryGroups = [];

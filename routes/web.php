@@ -5,12 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SalaryController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::controller(JobController::class)->group(function () {
     Route::get('/jobs', 'index')->name('jobs.index');
@@ -19,11 +18,9 @@ Route::controller(JobController::class)->group(function () {
     Route::get('/jobs/{job}', 'show');
 });
 
-Route::get('/search', SearchController::class);
-
-Route::get('/tags', [TagController::class, 'index']);
-Route::get('/salaries', [SalaryController::class, 'index']);
-Route::get('/employers', [EmployerController::class, 'index']);
+Route::get('/tags', TagController::class);
+Route::get('/salaries', SalaryController::class);
+Route::get('/employers', EmployerController::class);
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisteredUserController::class,'create']);

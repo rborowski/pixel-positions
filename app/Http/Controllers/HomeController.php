@@ -10,7 +10,7 @@ class HomeController extends Controller
     /**
      * Main page
      */
-    public function index()
+    public function __invoke()
     {
         $jobs = Job::with(['employer', 'tags', 'salary'])->latest()->get()->groupBy('featured');
 
