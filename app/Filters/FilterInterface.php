@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 interface FilterInterface
 {
     /**
-     * Aplikuje filtr na query builderze
+     * Applies filter on query builder
      */
     public function apply(Builder $query, Request $request): Builder;
 
     /**
-     * Sprawdza czy filtr powinien być zastosowany
+     * Checks whether a filter should be applied
      */
     public function shouldApply(Request $request): bool;
 }

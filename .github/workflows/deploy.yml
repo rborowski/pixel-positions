@@ -1,0 +1,52 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install NPM dependencies and build frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy app via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /public_html/
+          protocol: ${{ secrets.FTP_PROTOCOL || 'ftps' }}
+          exclude: |
+            **/.git/**
+            **/.git*
+            **/.env*
+            **/node_modules/**
+            **/vendor/**
+            **/storage/logs/**
+            **/storage/framework/cache/**
+            **/storage/framework/sessions/**
+            **/storage/framework/views/**
+            **/bootstrap/cache/**
+            **/.phpunit.cache
+            **/.github/**
+          state-name: app-sync-state.json
+          log-level: verbose

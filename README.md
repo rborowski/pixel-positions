@@ -1,21 +1,30 @@
-# Job Portal
+# Pixel Positions - job portal
 
-Example job portal application built with Laravel.
+A job portal application built with Laravel showcasing modern PHP practices.
 
-## Description
+**Give it a try:** https://pixel-positions.rborowski.pl
 
-Simple web application for browsing and posting job offers. The application includes basic features such as:
+## Features
 
-- Browsing job listings
-- Searching for jobs
-- Adding new job offers (requires registration)
-- Tag system for job offers
+- Browse and search job listings
+- Filter offers by tag, employer, and salary range with multi-currency support (You can mix filters!)
+- Register as an employer to add your own job offer
 
-## Technologies
+## Architecture Highlights
 
-- Laravel 12
+Built following SOLID principles and Laravel best practices:
+
+- **Filter Pattern**: Extensible filtering system using Strategy pattern with `FilterInterface`
+- **Type Safety**: PHP 8.5 enums for `Schedule` and `Currency` with proper casting
+- **Eloquent Relationships**: Well-defined model relationships
+- **Testing**: Pest test suite with factories
+- **Component-Based UI**: Reusable Blade components for forms and filters
+
+## Tech Stack
+
+- Laravel 12 with Blade
 - PHP 8.5
-- Pest (testing)
+- Pest for testing
 
 ## Installation
 
