@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Validation\Rules\Password;
 
@@ -34,7 +35,17 @@ class RegisteredUserController extends Controller
             'logo' => ['required', File::types(['png', 'jpg', 'webp'])]
         ]);
 
-        $logoPath = $request->logo->store('logos');
+        $file = $request->file('logo');
+        
+        if (!$file->isValid()) {
+            return back()->withErrors(['logo' => 'Invalid file.']);
+        }
+
+        $logoPath = $file->store('logos', 'public');
+        
+        if (!$logoPath || !Storage::disk('public')->exists($logoPath)) {
+            return back()->withErrors(['logo' => 'Failed to upload logo. Please check directory permissions.']);
+        }
 
         $user = User::create($userAttributes);
         $user->employer()->create([

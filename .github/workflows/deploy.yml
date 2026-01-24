@@ -42,10 +42,10 @@ jobs:
             **/node_modules/**
             **/vendor/**
             **/storage/logs/**
-            **/storage/framework/cache/**
-            **/storage/framework/sessions/**
-            **/storage/framework/views/**
-            **/bootstrap/cache/**
+            **/storage/framework/cache/*
+            **/storage/framework/sessions/*
+            **/storage/framework/views/*
+            **/bootstrap/cache/*
             **/.phpunit.cache
             **/.github/**
           state-name: app-sync-state.json
