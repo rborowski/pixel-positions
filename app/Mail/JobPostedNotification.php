@@ -40,10 +40,7 @@ class JobPostedNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails/job-posted',
-            with: [
-                'job' => $this->job,
-            ],
+            view: 'emails/job-posted'
         );
     }
 }

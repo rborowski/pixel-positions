@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\JobPosted;
 use App\Filters\JobFilter;
 use App\Models\Employer;
 use App\Models\Job;
@@ -93,6 +94,8 @@ class JobController extends Controller
                 $job->tag($tag);
             }
         }
+        
+        JobPosted::dispatch($job);
 
         return redirect('/');
     }
