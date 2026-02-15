@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
@@ -53,8 +54,9 @@ class RegisteredUserController extends Controller
             'logo' => 'storage/' . $logoPath,
         ]);
 
+        event(new UserRegistered($user));
         Auth::login($user);
 
-        return redirect()->intended('/');
+        return redirect()->route('verification.notice');
     }
 }
