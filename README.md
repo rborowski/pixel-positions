@@ -18,7 +18,7 @@ Built following SOLID principles and Laravel best practices:
 - **Type Safety**: PHP 8.5 enums for `Schedule` and `Currency` with proper casting
 - **Eloquent Relationships**: Well-defined model relationships
 - **Testing**: Pest test suite with factories
-- **Component-Based UI**: Reusable Blade components for forms and filters
+- **Component-Based UI**: Reusable Blade components for forms and filters.
 
 ## Tech Stack
 
